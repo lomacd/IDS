@@ -15,6 +15,29 @@
 
   gtag('config', 'UA-129778771-1');
 </script>
+  <script>
+    window.fbAsyncInit = function() {
+      FB.init({
+        appId      : '267074957338357',
+        cookie     : true,
+        xfbml      : true,
+        version    : 'v3.2'
+      });
+
+      var callback = function(response) {
+        statusChangeCallback(response);
+      }
+      FB.getLoginStatus(callback);
+    };
+
+  (function(d, s, id){
+     var js, fjs = d.getElementsByTagName(s)[0];
+     if (d.getElementById(id)) {return;}
+     js = d.createElement(s); js.id = id;
+     js.src = "https://connect.facebook.net/en_US/sdk.js";
+     fjs.parentNode.insertBefore(js, fjs);
+   }(document, 'script', 'facebook-jssdk'));
+</script>
 </head>
 <body>
 <ul>
