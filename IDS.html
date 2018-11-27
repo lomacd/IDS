@@ -16,23 +16,66 @@
   gtag('config', 'UA-129778771-1');
 </script>
 <link rel="stylesheet" href="css.css">
+<script>
+window.fbAsyncInit = function() {
+   FB.init({
+     appId      : 267030070831196
+     cookie     : true,  // enable cookies to allow the server to access
+                         // the session
+     xfbml      : true,  // parse social plugins on this page
+     version    : 'v3.2' // use graph api version 2.8
+   });
+
+   // Now that we've initialized the JavaScript SDK, we call
+   // FB.getLoginStatus().  This function gets the state of the
+   // person visiting this page and can return one of three states to
+   // the callback you provide.  They can be:
+   //
+   // 1. Logged into your app ('connected')
+   // 2. Logged into Facebook, but not your app ('not_authorized')
+   // 3. Not logged into Facebook and can't tell if they are logged into
+   //    your app or not.
+   //
+   // These three cases are handled in the callback function.
+
+   FB.getLoginStatus(function(response) {
+     statusChangeCallback(response);
+   });
+
+ };
+
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "https://connect.facebook.net/en_US/sdk.js";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+</script>
 </head>
 
 <body>
   <div id="grid">
 <ul>
-<li><a href="free.html" class="saw">자유게시판</a></li>
-<li><a href="q.html" class="saw">질문답변</a></li>
-<li><a href="ned.html">건의사항</a></li>
-<li><a href="char">충전소</a></li>
-<li><a href="cha">출금</a></li>
+<li><a onclick="fetchPage('free')">자유게시판</a></li>
+<li><a onclick="fetchPage('q')">질문답변</a></li>
+<li><a onclick="fetchPage('ned')">건의사항</a></li>
+<li><a onclick="fetchPage('char')">충전소</a></li>
+<li><a onclick="fetchPage('cha')">출금</a></li>
 </ul>
-<div id="bon">
-  <p>
-In computer programming, a variable or scalar is a storage location paired with an associated symbolic name (an identifier), which contains some known or unknown quantity or information referred to as a value. The variable name is the usual way to reference the stored value; this separation of name and content allows the name to be used independently of the exact information it represents. The identifier in computer source code can be bound to a value during run time, and the value of the variable may thus change during the course of program execution.
-</p>
-</div>
 </div>
 <input type="button" value="신고" onclick="alert('신고되었습니다')">
-<body/>
+<article>
+
+</article>
+<script>
+  function fetchPage(name){
+    fetch(name).then(function(response){
+      response.text().then(function(text){
+        document.querySelector('article').innerHTML = text;
+      })
+    })
+  }
+</script>
+</body>
 </html>
