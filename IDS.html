@@ -16,18 +16,18 @@
   gtag('config', 'UA-129778771-1');
 </script>
 <link rel="stylesheet" href="css.css">
- <script>
+<script>
 
 window.fbAsyncInit = function() {
     FB.init({
       appId      : '267030070831196',
-      cookie     : true,  // enable cookies to allow the server to access 
+      cookie     : true,  // enable cookies to allow the server to access
                           // the session
       xfbml      : true,  // parse social plugins on this page
       version    : 'v3.2' // use graph api version 2.8
     });
 
-    // Now that we've initialized the JavaScript SDK, we call 
+    // Now that we've initialized the JavaScript SDK, we call
     // FB.getLoginStatus().  This function gets the state of the
     // person visiting this page and can return one of three states to
     // the callback you provide.  They can be:
@@ -40,7 +40,12 @@ window.fbAsyncInit = function() {
     // These three cases are handled in the callback function.
 var callback = function(response) {
 //  statusChangeCallback(response);
-console.log(response);
+  console.log(response);
+  if(response.status === 'connected'){
+    document.querySelector('#logbtn').value = 'log out';
+  } else {
+    document.querySelector('#logbtn').value = 'login';
+  }
 }
     FB.getLoginStatus(callback);
 
@@ -57,7 +62,21 @@ console.log(response);
 </head>
 
 <body>
-  <input type="button" id="logbtn" value="checking...">
+    <input type="button" id="logbtn" value="checking..." onclick="
+      if(this.value === 'login'){
+        // now logout
+        FB.login(function(response){
+          console.log('login =>', response);
+          checkLoginStatus(res);
+        });
+      } else {
+        // now login
+        FB.logout(function(response){
+          console.log('log out =>', response);
+          checkLoginStatus(response);
+        });
+      }
+  ">
   <div id="grid">
 <ul>
 <li><a onclick="fetchPage('free')">자유게시판</a></li>
