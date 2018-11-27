@@ -17,6 +17,15 @@
 </script>
 <link rel="stylesheet" href="css.css">
 <script>
+var callback = function(response) {
+//  statusChangeCallback(response);
+  console.log(response);
+  if(response.status === 'connected'){
+    document.querySelector('#logbtn').value = 'log out';
+  } else {
+    document.querySelector('#logbtn').value = 'login';
+  }
+}
 
 window.fbAsyncInit = function() {
     FB.init({
@@ -38,15 +47,7 @@ window.fbAsyncInit = function() {
     //    your app or not.
     //
     // These three cases are handled in the callback function.
-var callback = function(response) {
-//  statusChangeCallback(response);
-  console.log(response);
-  if(response.status === 'connected'){
-    document.querySelector('#logbtn').value = 'log out';
-  } else {
-    document.querySelector('#logbtn').value = 'login';
-  }
-}
+
     FB.getLoginStatus(callback);
 
   };
@@ -58,22 +59,23 @@ var callback = function(response) {
   js.src = "https://connect.facebook.net/en_US/sdk.js";
   fjs.parentNode.insertBefore(js, fjs);
 }(document, 'script', 'facebook-jssdk'));
+
 </script>
 </head>
 
 <body>
-    <input type="button" id="logbtn" value="checking..." onclick="
+    <<input type="button" id="logbtn" value="checking..." onclick="
       if(this.value === 'login'){
         // now logout
         FB.login(function(response){
           console.log('login =>', response);
-          checkLoginStatus(res);
+          callback(response);
         });
       } else {
         // now login
         FB.logout(function(response){
           console.log('log out =>', response);
-          checkLoginStatus(response);
+          callback(response);
         });
       }
   ">
