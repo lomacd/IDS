@@ -38,13 +38,14 @@ window.fbAsyncInit = function() {
    //
    // These three cases are handled in the callback function.
 
-  var callback = function(response){
-     console.log(response)
-   };
-   FB.getLoginStatus(callback) {
+   FB.getLoginStatus(function(response) {
      statusChangeCallback(response);
    });
-
+if(response.status === 'connected'){
+  document.querySelector('#logbtn').value = 'logout';
+} else {
+  document.querySelector('#logbtn').value = 'login';
+}
  };
 
 (function(d, s, id) {
@@ -58,6 +59,7 @@ window.fbAsyncInit = function() {
 </head>
 
 <body>
+  <input type="button" id="logbtn" value="checking...">
   <div id="grid">
 <ul>
 <li><a onclick="fetchPage('free')">자유게시판</a></li>
