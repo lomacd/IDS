@@ -15,45 +15,24 @@
 
   gtag('config', 'UA-129778771-1');
 </script>
-<script>
-    window.fbAsyncInit = function() {
-      FB.init({
-        appId      : '267074957338357',
-        cookie     : true,
-        xfbml      : true,
-        version    : 'v3.2'
-      });
-
-      var callback = function(response) {
-        statusChangeCallback(response);
-      }
-      FB.getLoginStatus(callback);
-    };
-
-  (function(d, s, id){
-     var js, fjs = d.getElementsByTagName(s)[0];
-     if (d.getElementById(id)) {return;}
-     js = d.createElement(s); js.id = id;
-     js.src = "https://connect.facebook.net/en_US/sdk.js";
-     fjs.parentNode.insertBefore(js, fjs);
-   }(document, 'script', 'facebook-jssdk'));
-</script>
-<style>
-h1{
-text-align: center
-}
-</style>
+<link rel="stylesheet" href="css.css">
 </head>
 
 <body>
+  <div id="grid">
 <ul>
-<li><a href="free.html">자유게시판</a></li>
-<li><a href="q.html">질문답변</a></li>
+<li><a href="free.html" class="saw">자유게시판</a></li>
+<li><a href="q.html" class="saw">질문답변</a></li>
 <li><a href="ned.html">건의사항</a></li>
-</ul>
-<ul>
 <li><a href="char">충전소</a></li>
 <li><a href="cha">출금</a></li>
 </ul>
+<div id="bon">
+  <p>
+In computer programming, a variable or scalar is a storage location paired with an associated symbolic name (an identifier), which contains some known or unknown quantity or information referred to as a value. The variable name is the usual way to reference the stored value; this separation of name and content allows the name to be used independently of the exact information it represents. The identifier in computer source code can be bound to a value during run time, and the value of the variable may thus change during the course of program execution.
+</p>
+</div>
+</div>
+<input type="button" value="신고" onclick="alert('신고되었습니다')">
 <body/>
 </html>
